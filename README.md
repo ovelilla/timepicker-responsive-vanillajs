@@ -2,7 +2,7 @@
 Responsive vanilla JavaScript timepicker
 
 
-Demo: https://bright-sawine-ee9de0.netlify.app/
+Demo: https://heroic-fenglisu-107281.netlify.app
 
 
 ```
