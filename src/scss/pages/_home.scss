@@ -1,0 +1,15 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: v.$white;
+    border-radius: 8px;
+    box-shadow: v.$shadow-md;
+
+    margin-top: 300px;
+}

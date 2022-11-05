@@ -1,0 +1,239 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.mio-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 20px;
+    min-width: 0;
+
+    @include m.tablet {
+        gap: 22px;
+    }
+
+    @include m.desktop {
+        gap: 24px;
+    }
+
+    .mio-double {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 18px;
+
+        @include m.mobile {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include m.tablet {
+            gap: 20px;
+        }
+
+        @include m.desktop {
+            gap: 22px;
+        }
+    }
+
+    .mio-field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        &.active {
+            .mio-label {
+                transform: translate(3px, -22px) scale(0.8);
+
+                @include m.desktop {
+                    transform: translate(3px, -25px) scale(0.8);
+                }
+            }
+        }
+
+        &.focus {
+            .mio-wrapper:hover .mio-input {
+                border-color: transparent;
+            }
+
+            .mio-label {
+                color: v.$blue-900;
+            }
+
+            .mio-input {
+                outline: 2px solid v.$blue-gray-500;
+                border-color: transparent;
+            }
+        }
+
+        &.error {
+            .mio-wrapper:hover .mio-input {
+                border-color: v.$red-600;
+            }
+
+            .mio-label {
+                color: v.$red-600;
+            }
+
+            .mio-input {
+                border-color: v.$red-600;
+            }
+
+            &.focus {
+                .mio-wrapper:hover .mio-input {
+                    border-color: transparent;
+                }
+
+                .mio-input {
+                    outline: 2px solid v.$red-600;
+                    border-color: transparent;
+                }
+            }
+
+            .mio-message {
+                color: v.$red-600;
+            }
+        }
+
+        &.right-adornment {
+            .mio-input {
+                padding-right: 50px;
+            }
+        }
+
+        &.left-adornment {
+            .mio-input {
+                padding-left: 50px;
+            }
+        }
+
+        .mio-wrapper {
+            display: flex;
+            position: relative;
+            min-width: 0;
+
+            &:hover .mio-input {
+                border-color: v.$blue-gray-300;
+            }
+        }
+
+        .mio-label {
+            position: absolute;
+            top: 14px;
+            left: 10px;
+            max-width: calc(100% - 20px);
+            padding: 0 8px;
+            background-color: v.$white;
+            color: v.$blue-gray-500;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: text;
+            transform-origin: left top;
+            transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+
+            @include m.desktop {
+                top: 16px;
+                left: 12px;
+            }
+        }
+
+        .mio-input {
+            width: 100%;
+            min-width: 0;
+            padding: 14px 18px;
+            border: 1px solid v.$blue-gray-100;
+            border-radius: 6px;
+            color: v.$blue-900;
+            font-weight: 400;
+            cursor: text;
+
+            &:-webkit-autofill {
+                box-shadow: 0 0 0px 1000px v.$white inset;
+                -webkit-box-shadow: 0 0 0px 1000px v.$white inset;
+            }
+
+            @include m.desktop {
+                padding: 16px 20px;
+            }
+        }
+
+        .mio-message {
+            padding-left: 16px;
+            font-size: 1.2rem;
+            font-weight: 400;
+
+            @include m.desktop {
+                padding-left: 18px;
+                font-size: 1.3rem;
+            }
+        }
+
+        .mio-adornment {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            min-width: 48px;
+            min-height: 48px;
+            transform: translateY(-50%);
+            color: v.$gray-500;
+
+            &.right {
+                right: 2px;
+            }
+
+            &.left {
+                left: 2px;
+            }
+        }
+
+        .mio-inc-dec {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            position: absolute;
+            top: 50%;
+            right: 6px;
+            transform: translateY(-50%);
+            background-color: v.$white;
+            color: v.$gray-500;
+        }
+
+        select {
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            border: none;
+        }
+
+        [type="number"]::-webkit-outer-spin-button,
+        [type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    }
+
+    .mio-submit-field {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        @include m.tablet {
+            align-self: flex-start;
+            margin-top: 20px;
+        }
+    }
+
+    .mio-color {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+    }
+}

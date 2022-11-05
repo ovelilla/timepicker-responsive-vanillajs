@@ -1,0 +1,238 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.timepicker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    @include m.tablet {
+        background-color: transparent;
+    }
+
+    &.in {
+        animation: fadeIn 0.3s ease;
+
+        .content {
+            animation: slideIn 0.3s ease;
+        }
+    }
+
+    &.out {
+        animation: fadeOut 0.3s ease;
+
+        .content {
+            animation: slideOut 0.3s ease;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+        user-select: none;
+        width: 100%;
+        max-width: 320px;
+        // max-height: 398px;
+        // padding: 10px 10px;
+        background-color: v.$white;
+        border-radius: 8px;
+        box-shadow: v.$shadow-md;
+
+        @include m.tablet {
+            position: absolute;
+        }
+    }
+
+    .body {
+        display: flex;
+        flex: 1 1 auto;
+
+        .column {
+            display: flex;
+            flex: 1 1 auto;
+            padding-top: 60px;
+            padding-bottom: 40px;
+            position: relative;
+            cursor: pointer;
+
+            &::before {
+                content: "";
+                z-index: 2;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                background: linear-gradient(to bottom, v.$white, transparent);
+            }
+
+            &::after {
+                content: "";
+                z-index: 2;
+                position: absolute;
+                bottom: 40px;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                background: linear-gradient(to top, v.$white, transparent);
+            }
+
+            &.left .viewer::before,
+            &.left .viewer::after,
+            &.right .viewer::before,
+            &.right .viewer::after {
+                content: "";
+                position: absolute;
+                width: 70%;
+            }
+
+            &.left .viewer::before,
+            &.right .viewer::before {
+                top: 80px;
+                border-bottom: 1px solid v.$gray-200;
+            }
+
+            &.left .viewer::after,
+            &.right .viewer::after {
+                bottom: 80px;
+                border-top: 1px solid v.$gray-200;
+            }
+
+            &.left .viewer::before,
+            &.left .viewer::after {
+                right: 0;
+            }
+
+            &.right .viewer::before,
+            &.right .viewer::after {
+                left: 0;
+            }
+        }
+
+        .viewer {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+            position: relative;
+            height: 220px;
+
+            .hour {
+                padding-left: 30px;
+            }
+
+            .minute {
+                padding-right: 30px;
+            }
+
+            .hours,
+            .minutes {
+                display: flex;
+                flex-direction: column;
+                z-index: 1;
+                position: absolute;
+                top: -100px;
+                width: 100%;
+            }
+
+            .hour,
+            .minute {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 50px;
+                font-size: 1.6rem;
+                font-weight: 300;
+
+                &.current {
+                    min-height: 60px;
+                    color: v.$indigo-600;
+                    font-size: 2.4rem;
+                    font-weight: 500;
+                }
+
+                &.prev,
+                &.next {
+                    min-height: 50px;
+                    font-size: 1.8rem;
+                }
+
+                &.prev-last,
+                &.next-last {
+                    font-size: 1.6rem;
+                    min-height: 30px;
+                }
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        min-height: 60px;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 1 auto;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: v.$indigo-600;
+
+            &:active {
+                background-color: v.$gray-100;
+            }
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-10px);
+        }
+
+        to {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            transform: translateY(0px);
+        }
+
+        to {
+            transform: translateY(-10px);
+        }
+    }
+}

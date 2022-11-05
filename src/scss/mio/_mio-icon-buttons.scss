@@ -1,0 +1,67 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.mio-icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: v.$gray-700;
+
+    &:hover {
+        background-color: v.$slate-100;
+    }
+
+    &:active {
+        background-color: v.$slate-200;
+    }
+
+    &.btn-size-small {
+        width: 36px;
+        height: 36px;
+    }
+
+    &.btn-size-medium {
+        width: 42px;
+        height: 42px;
+    }
+
+    &.btn-size-large {
+        width: 48px;
+        height: 48px;
+    }
+
+    &.btn-size-xl {
+        width: 54px;
+        height: 54px;
+    }
+
+    &.svg-size-xs svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    &.svg-size-small svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.svg-size-medium svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.svg-size-large svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    &.svg-size-xl svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    svg {
+        color: v.$slate-600;
+    }
+}
