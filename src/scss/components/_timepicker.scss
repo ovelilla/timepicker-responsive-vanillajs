@@ -43,8 +43,6 @@
         user-select: none;
         width: 100%;
         max-width: 320px;
-        // max-height: 398px;
-        // padding: 10px 10px;
         background-color: v.$white;
         border-radius: 8px;
         box-shadow: v.$shadow-md;
@@ -166,12 +164,14 @@
                 &.next {
                     min-height: 50px;
                     font-size: 1.8rem;
+                    transform: rotateX(20deg);
                 }
 
                 &.prev-last,
                 &.next-last {
                     font-size: 1.6rem;
                     min-height: 30px;
+                    transform: rotateX(40deg);
                 }
             }
         }
