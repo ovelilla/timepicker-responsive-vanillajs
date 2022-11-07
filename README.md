@@ -5,6 +5,9 @@ Responsive vanilla JavaScript timepicker
 Demo: https://heroic-fenglisu-107281.netlify.app
 
 
+![](name-of-giphy.gif)
+
+
 ```
 import Timepicker from "./components/timepicker";
 
