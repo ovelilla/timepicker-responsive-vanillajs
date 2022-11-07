@@ -5,7 +5,7 @@ Responsive vanilla JavaScript timepicker
 Demo: https://heroic-fenglisu-107281.netlify.app
 
 
-![](name-of-giphy.gif)
+![](timepicker.gif)
 
 
 ```
