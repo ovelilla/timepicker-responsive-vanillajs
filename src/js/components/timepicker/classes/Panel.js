@@ -99,7 +99,9 @@ class Panel {
     }
 
     destroy() {
-        this.observer.disconnect();
+        if (this.observer) {
+            this.observer.disconnect();
+        }
         window.removeEventListener("resize", this.resize);
         this.timepicker.remove();
     }
